@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tea Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2>Tea Tracker</h2>
+    <div class="tea-cards-container">
+      <% teaData.forEach(tea => { %>
+      <div class="tea-card">
+        <img
+          class="tea-image"
+          src="<%= tea.imageLink %>"
+          width="200"
+          height="200"
+        />
+        <div>
+          <input type="checkbox" id="<%= tea.teaName %>" class="tea-checkbox" />
+          <label for="<%= tea.teaName %>"><%= tea.teaName %></label>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll(".tea-checkbox");
+
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const label = this.nextElementSibling;
+            if (this.checked) {
+              label.style.textDecoration = "line-through";
+            } else {
+              label.style.textDecoration = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tea-cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .tea-card {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid rgba(198, 198, 198, 0.5);
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .tea-checkbox + label {
+    cursor: pointer;
+  }
+
+  .tea-checkbox:checked + label {
+    text-decoration: line-through;
+  }
+
+  .tea-image {
+  }
+</style>

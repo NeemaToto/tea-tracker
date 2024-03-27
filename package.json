@@ -1,0 +1,15 @@
+{
+  "name": "tea-tracker",
+  "version": "1.0.0",
+  "description": "An website where you can track tea's you have drank",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aldrin, Kai, Meelaud, Neema",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.19.2"
+  }
+}
