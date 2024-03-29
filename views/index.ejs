@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h2>Tea Tracker</h2>
+    <h1 class="title">Tea Tracker</h1>
     <div class="tea-cards-container">
       <% teaData.forEach(tea => { %>
       <div class="tea-card">
@@ -67,11 +67,14 @@
 </html>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
   body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Raleway", sans-serif;
   }
 
   .tea-cards-container {
@@ -102,6 +105,10 @@
 
   .tea-checkbox:checked + label {
     text-decoration: line-through;
+  }
+
+  .title {
+
   }
 
 </style>
