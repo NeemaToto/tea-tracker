@@ -25,21 +25,43 @@
       <% }); %>
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const checkboxes = document.querySelectorAll(".tea-checkbox");
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        checkboxes.forEach((checkbox) => {
-          checkbox.addEventListener("change", function () {
-            const label = this.nextElementSibling;
-            if (this.checked) {
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        try {
+          const response = await axios.get("/tea");
+          const drankTeas = response.data;
+
+          const checkboxes = document.querySelectorAll(".tea-checkbox");
+          checkboxes.forEach((checkbox) => {
+            const label = checkbox.nextElementSibling;
+            if (drankTeas.includes(label.innerText)) {
+              checkbox.checked = true;
               label.style.textDecoration = "line-through";
-            } else {
-              label.style.textDecoration = "none";
             }
           });
-        });
+        } catch (error) {
+          console.error("Error fetching drank teas:", error);
+        }
       });
+
+      document.addEventListener("change", async function (event) {
+        if (event.target.classList.contains("tea-checkbox")) {
+          const label = event.target.nextElementSibling;
+          const drank = event.target.checked;
+          try {
+            await axios.post("/tea", { teaName: label.innerText, drank });
+            if (!drank) {
+              // If the checkbox is unchecked
+              label.style.textDecoration = "none"; // Remove the strikethrough
+            }
+          } catch (error) {
+            console.error("Error updating tea data:", error);
+          }
+        }
+      });
+
     </script>
   </body>
 </html>
@@ -82,6 +104,4 @@
     text-decoration: line-through;
   }
 
-  .tea-image {
-  }
 </style>
