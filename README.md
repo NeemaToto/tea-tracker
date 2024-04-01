@@ -1,5 +1,7 @@
 # Tea Tracker
 
+## Made by Kai, Aldrin, Meelaud, Neema (Set G)
+
 ## Description
 Tea Tracker is a full-stack application that allows you to keep track of teas you have drunk. It's a great way to explore different teas without getting confused about which ones you have tried before, as there are hundreds of unique teas out there!
 
